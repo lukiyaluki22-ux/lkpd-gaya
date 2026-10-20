@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guru – Periksa LKPD KIT GAYA</title>
+<style>
+:root{--bg:#e9f8fb;--card:#fff;--ink:#16325c;--line:#ffd966}
+@media (prefers-color-scheme:dark){:root{--bg:#10222f;--card:#1a3144;--ink:#eef5ff;--line:#b8932a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.5 "Trebuchet MS",system-ui,sans-serif}
+main{max-width:820px;margin:0 auto;padding:20px 14px 60px}
+.card{background:var(--card);border:3px solid var(--line);border-radius:18px;padding:12px 16px;margin:12px 0}
+summary{font-weight:700;cursor:pointer}
+h3{margin:14px 0 4px}
+p.a{margin:2px 0 10px;padding:6px 10px;background:#0001;border-radius:10px;white-space:pre-wrap}
+input,textarea{width:100%;margin:6px 0;padding:8px 10px;border:2px solid #b8d4ea;border-radius:10px;font:inherit;background:var(--card);color:var(--ink)}
+button{border:0;border-radius:99px;padding:9px 20px;font:inherit;font-weight:700;color:#fff;background:#2a7de1;cursor:pointer}
+#err{color:#d6336c;font-weight:700}
+</style>
+</head>
+<body>
+<main>
+<h1>👩‍🏫 Periksa LKPD KIT GAYA</h1>
+<div id="login" class="card">
+  <input id="pin" type="password" placeholder="PIN guru" autocomplete="current-password">
+  <button onclick="load()">Masuk</button>
+  <p id="err"></p>
+</div>
+<div id="app" hidden>
+  <button onclick="load()">🔄 Muat ulang</button>
+  <div id="list"></div>
+</div>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+let pin='',data=[];
+function el(t,txt,cls){const e=document.createElement(t);if(txt!=null)e.textContent=txt;if(cls)e.className=cls;return e}
+const label=d=>d.nama+' ('+d.kelas+') — '+(d.nilai==null?'⏳ belum dinilai':'⭐ '+d.nilai);
+async function load(){
+  pin=$('#pin').value||pin;
+  try{
+    const r=await fetch('/api/lkpd?all=1',{headers:{'x-pin':pin}});
+    if(!r.ok){$('#err').textContent=r.status==401?'PIN salah, atau GURU_PIN belum diatur di Netlify.':'Gagal memuat data.';return}
+    data=await r.json();$('#login').hidden=true;$('#app').hidden=false;list();
+  }catch(e){$('#err').textContent='Gagal terhubung ke server.'}
+}
+function list(){
+  const box=$('#list');box.replaceChildren();
+  if(!data.length)box.append(el('p','Belum ada LKPD yang masuk.'));
+  data.forEach(d=>{
+    const c=el('details',null,'card'),s=el('summary',label(d));c.append(s);
+    c.append(el('small','Dikirim: '+new Date(d.sentAt).toLocaleString('id-ID')));
+    let last='';
+    d.rows.forEach(r=>{if(r.k!=last){c.append(el('h3',r.k));last=r.k}c.append(el('b',r.q),el('p',r.a||'(kosong)','a'))});
+    const n=el('input');n.type='number';n.min=0;n.max=100;n.placeholder='Nilai 0–100';n.value=d.nilai??'';
+    const k=el('textarea');k.rows=2;k.placeholder='Komentar untuk siswa';k.value=d.komentar||'';
+    const b=el('button','Simpan nilai');
+    b.onclick=async()=>{
+      b.textContent='Menyimpan...';
+      const r=await fetch('/api/lkpd',{method:'PUT',headers:{'x-pin':pin,'Content-Type':'application/json'},body:JSON.stringify({id:d.id,nilai:n.value,komentar:k.value})});
+      if(r.ok){d.nilai=n.value===''?null:+n.value;d.komentar=k.value;s.textContent=label(d);b.textContent='Tersimpan ✓'}else b.textContent='Gagal, coba lagi';
+    };
+    c.append(n,k,b);box.append(c);
+  });
+}
+$('#pin').addEventListener('keydown',e=>{if(e.key=='Enter')load()});
+</script>
+</body>
+</html>

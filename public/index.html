@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KIT GAYA – Di Sekitar Kita</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e9f8fb;--card:#fff;--ink:#16325c;--mut:#4b5f80;--line:#ffd966;--coral:#ff8f7a;--teal:#74d0e0;--grn:#5fae3f;--blu:#2a7de1;--org:#ee7f22;--pur:#9566d3;--yel:#f7b500;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10222f;--card:#1a3144;--ink:#eef5ff;--mut:#a9bdd6;--line:#b8932a}}
+:root[data-theme="dark"]{--bg:#10222f;--card:#1a3144;--ink:#eef5ff;--mut:#a9bdd6;--line:#b8932a}
+*{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 17px/1.5 Fredoka,"Trebuchet MS",system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--coral);z-index:20}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;display:flex;gap:6px;overflow-x:auto;padding:8px 10px;background:var(--coral)}
+nav button{flex:none;border:0;border-radius:99px;padding:8px 16px;font:600 16px Fredoka,sans-serif;background:#fff8;color:#4a1d12;cursor:pointer}
+nav button.on{background:#fff;box-shadow:0 3px 0 #0002}
+main{max-width:860px;margin:0 auto;padding:16px 14px 60px}
+h1,h2,h3{margin:0 0 .4em;line-height:1.15}
+.hero{text-align:center;padding:22px 10px}
+.hero small{display:inline-block;background:var(--line);color:#16325c;border-radius:99px;padding:4px 16px;font-weight:600}
+.logo{font-size:clamp(56px,16vw,110px);font-weight:700;letter-spacing:1px;margin:10px 0 0;line-height:1}
+.logo span:nth-child(1){color:#16487f}.logo span:nth-child(2){color:var(--org)}.logo span:nth-child(3){color:var(--grn)}.logo span:nth-child(4){color:#1d9bd6}.logo span:nth-child(5){color:var(--yel)}
+.sub{display:inline-block;background:#1c4f8f;color:#fff;border-radius:99px;padding:6px 24px;font-size:22px;margin:6px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.tile{border:0;border-radius:24px;padding:16px 8px;color:#fff;font:600 18px Fredoka,sans-serif;cursor:pointer;box-shadow:0 5px 0 #0003;transition:transform .15s}
+.tile:active{transform:translateY(4px);box-shadow:0 1px 0 #0003}
+.tile b{display:block;font-size:44px;font-weight:400}
+.card{background:var(--card);border:3px solid var(--line);border-radius:22px;padding:14px 18px;margin:14px 0}
+.card h3{font-size:20px}
+details.card summary{font-weight:600;font-size:20px;cursor:pointer}
+ol,ul{padding-left:22px;margin:.5em 0}li{margin:.35em 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{background:#fff3c4;color:#5a4300;border-radius:99px;padding:4px 14px}
+.pills{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px}
+.pills button{flex:none;border:3px solid var(--c);background:var(--card);color:var(--ink);border-radius:18px;padding:8px 14px;font:600 16px Fredoka,sans-serif;cursor:pointer}
+.pills button.on{background:var(--c);color:#fff}
+.mh{border-radius:26px;color:#fff;padding:18px;background:var(--c)}
+.mh h2{font-size:28px}.mh p{margin:.2em 0}
+.step{display:flex;gap:10px;align-items:flex-start;padding:8px;border-radius:14px;cursor:pointer}
+.step:hover{background:#ffd96633}
+.step input{width:24px;height:24px;margin-top:3px;accent-color:var(--c,#2a7de1)}
+.step.done span{text-decoration:line-through;opacity:.55}
+.bar{height:14px;border-radius:9px;background:#0001;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--grn);transition:width .4s}
+.lab{background:linear-gradient(var(--card),var(--card)) padding-box;border:3px dashed var(--c);border-radius:22px;padding:14px;margin:14px 0}
+.stage{position:relative;height:86px;border-bottom:6px solid #8a6a3b;margin:8px 0;overflow:hidden}
+.car{position:absolute;bottom:0;left:2%;font-size:46px;transition:left 1s cubic-bezier(.2,.8,.3,1);transform:scaleX(-1)}
+.btn{border:0;border-radius:99px;padding:10px 20px;margin:4px 4px 4px 0;font:600 17px Fredoka,sans-serif;color:#fff;background:var(--c,#2a7de1);cursor:pointer;box-shadow:0 4px 0 #0003}
+.btn:active{transform:translateY(3px);box-shadow:none}
+.msg{min-height:3em;font-weight:600;color:var(--mut)}
+.items{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.it{border:3px solid var(--line);background:var(--card);color:var(--ink);border-radius:18px;padding:8px 12px;font:600 15px Fredoka,sans-serif;cursor:pointer;transition:transform .5s}
+.it span{display:block;font-size:38px}.it.pull{transform:translateY(-26px) rotate(-6deg);border-color:var(--grn)}.it.no{animation:sh .4s;border-color:var(--coral)}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.lane{display:flex;align-items:center;gap:8px}.lane label{width:78px;font-size:14px}.lane .stage{flex:1;height:56px}.lane .car{font-size:32px}
+.obj{display:inline-block;font-size:70px;transition:transform .6s;cursor:pointer;margin:6px 14px;transform-origin:bottom}
+.drop{position:relative;height:190px;text-align:center;overflow:hidden}
+.ball{position:absolute;left:calc(50% - 22px);top:0;font-size:40px}
+.ball.go{animation:fall 1.1s forwards}
+@keyframes fall{0%{top:0;animation-timing-function:cubic-bezier(.5,0,1,.6)}55%{top:120px;animation-timing-function:cubic-bezier(0,.4,.5,1)}70%{top:92px;animation-timing-function:cubic-bezier(.5,0,1,.6)}85%{top:120px}100%{top:120px}}
+.pad{position:absolute;bottom:34px;left:30%;width:40%;height:14px;border-radius:8px;background:#4a90e2}
+.earth{position:absolute;bottom:-4px;left:0;right:0;font-size:30px}
+.kes{background:#fff0ee;color:#7a2418;border-radius:14px;padding:8px 14px;margin-top:10px}
+label.f{display:block;margin:12px 0 4px;font-weight:600}
+textarea,select,input.t{width:100%;border:3px solid #b8d4ea;border-radius:14px;padding:9px 12px;font:500 16px Fredoka,sans-serif;background:var(--card);color:var(--ink)}
+textarea:focus,select:focus,input:focus,button:focus-visible{outline:3px solid var(--blu);outline-offset:2px}
+.nm{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hd{display:inline-block;color:#fff;border-radius:99px;padding:3px 16px;margin-top:12px;font-weight:600;background:var(--c)}
+.pr{text-align:center}.pr .av{font-size:80px}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation-duration:.01s!important}}
+</style>
+</head>
+<body>
+<nav id="nav"></nav>
+<main id="m"></main>
+<script>
+const $=s=>document.querySelector(s);
+let ST={};try{ST=JSON.parse(localStorage.getItem('kg')||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem('kg',JSON.stringify(ST))}catch(e){}};
+const C=['#ee7f22','#2a7de1','#9566d3','#5fae3f','#1aa0a8'];
+const MI=[
+{t:'Ayo Dorong dan Tarik!',e:'🏃',n:'Gaya',k:'Gaya otot dan pengaruh gaya terhadap gerak benda.',g:'Mengamati pengaruh dorongan dan tarikan terhadap gerak benda.',a:['1 mobil mainan','1 tali pendek','1 lintasan datar'],l:['Siapkan mobil-mobilan, tali pendek, dan lintasan datar.','Amati posisi mobil sebelum diberi gaya.','Dorong mobil, kemudian tarik menggunakan tali secara perlahan.','Amati perubahan gerak yang terjadi dan catat hasilnya.'],s:'Jangan mendorong mobil ke arah teman atau wajah.',c:'Gaya otot berupa dorongan dan tarikan dapat membuat benda bergerak atau mengubah geraknya.'},
+{t:'Magnet Ajaib',e:'🧲',n:'Magnet',k:'Gaya magnet.',g:'Mengetahui bahwa magnet dapat menarik benda tertentu.',a:['1 magnet','5 klip kertas','1 benda kayu','1 benda plastik','1 benda logam (baut)'],l:['Siapkan magnet dan benda-benda yang akan diuji.','Prediksikan benda yang dapat ditarik magnet.','Dekatkan magnet pada setiap benda secara bergantian.','Catat benda yang tertarik dan tidak tertarik oleh magnet.'],s:'Jauhkan magnet kuat dari perangkat elektronik dan media penyimpanan magnetik.',c:'Magnet dapat menarik benda tertentu, tetapi tidak semua benda dapat ditarik magnet.'},
+{t:'Permukaan Licin atau Kasar?',e:'🛣️',n:'Permukaan',k:'Gaya gesek.',g:'Mengamati perbedaan gerak benda pada permukaan yang berbeda.',a:['1 mobil mainan kecil','1 karton licin','1 potong kain','1 karton bertekstur'],l:['Siapkan mobil-mobilan atau balok kecil serta permukaan licin dan kasar.','Letakkan benda pada titik awal yang sama.','Dorong benda dengan cara dan kekuatan yang diusahakan sama.','Bandingkan gerak atau jarak tempuh benda pada setiap permukaan.'],s:'Gunakan benda yang aman, tidak tajam, dan tidak mudah pecah.',c:'Permukaan yang berbeda memengaruhi gerak benda. Gaya gesek membuat benda lebih sulit bergerak.'},
+{t:'Bentuk Benda Berubah!',e:'🟣',n:'Bentuk',k:'Pengaruh gaya terhadap bentuk benda.',g:'Membuktikan bahwa gaya dapat mengubah bentuk benda.',a:['1 plastisin','1 spons','1 karet gelang'],l:['Siapkan plastisin, spons, dan karet gelang.','Amati bentuk awal setiap benda.','Tekan plastisin dan spons secara perlahan, lalu regangkan karet gelang sedikit.','Amati perubahan bentuk setiap benda setelah gaya dilepaskan.'],s:'Jangan meregangkan karet gelang berlebihan atau mengarahkannya ke wajah.',c:'Gaya dapat mengubah bentuk benda. Ada benda yang kembali seperti semula, ada yang tidak.'},
+{t:'Mengapa Benda Jatuh?',e:'⬇️',n:'Gravitasi',k:'Gaya gravitasi.',g:'Mengamati pengaruh gravitasi terhadap benda yang dilepaskan.',a:['1 bola kecil yang ringan','1 benda ringan lain yang aman','1 alas empuk'],l:['Siapkan bola ringan, benda ringan lain yang aman, dan alas empuk.','Pegang benda pada ketinggian rendah yang aman.','Lepaskan benda tanpa melemparkannya.','Amati arah gerak benda dan diskusikan pengaruh gaya gravitasi.'],s:'Jangan melempar benda ke arah teman atau wajah.',c:'Benda yang dilepaskan bergerak menuju Bumi karena adanya gaya gravitasi.'}];
+const INFO=[
+['🎯 Deskripsi KIT','<p>KIT GAYA adalah media pembelajaran IPAS untuk memahami konsep gaya lewat eksperimen sederhana dalam kehidupan sehari-hari. Isinya lima kartu eksperimen, alat dan bahan pendukung, serta Lembar Kerja Peserta Didik (LKPD).</p>'],
+['🚩 Tujuan Penggunaan','<ol><li>Memahami berbagai konsep gaya melalui percobaan langsung.</li><li>Mengamati pengaruh gaya terhadap gerak dan bentuk benda.</li><li>Mengembangkan keterampilan mengamati, mencoba, mencatat hasil, dan menyimpulkan.</li><li>Menumbuhkan rasa ingin tahu, kerja sama, dan sikap tanggung jawab.</li></ol>'],
+['💡 Persiapan Sebelum Menggunakan KIT','<ol><li>Letakkan kotak KIT pada tempat yang aman dan mudah dijangkau.</li><li>Periksa kelengkapan kartu eksperimen, alat, dan bahan.</li><li>Siapkan alat dan bahan sesuai misi yang akan dilakukan.</li><li>Bacalah tujuan, langkah percobaan, dan pesan keselamatan pada kartu.</li><li>Siapkan alat tulis serta LKPD untuk mencatat hasil pengamatan.</li><li>Atur tempat kegiatan agar percobaan nyaman dilakukan.</li></ol>'],
+['⛑️ Aturan Keselamatan','<ol><li>Gunakan alat dan bahan sesuai petunjuk pada kartu eksperimen.</li><li>Lakukan percobaan di bawah pengawasan guru.</li><li>Jangan melempar benda ke arah teman atau wajah.</li><li>Jangan mengarahkan magnet kuat ke perangkat elektronik atau media penyimpanan magnetik.</li><li>Hindari meregangkan karet gelang secara berlebihan atau mengarahkannya ke wajah.</li><li>Gunakan benda yang aman, tidak tajam, dan tidak mudah pecah.</li><li>Laporkan kepada guru jika ada alat rusak atau kondisi yang membahayakan.</li></ol>'],
+['🧺 Penyimpanan dan Perawatan','<ol><li>Bersihkan dan keringkan alat setelah digunakan.</li><li>Pisahkan alat sesuai jenis dan tempat penyimpanannya.</li><li>Kembalikan kartu eksperimen ke urutan semula.</li><li>Periksa kelengkapan alat berdasarkan daftar inventaris KIT.</li><li>Simpan kotak KIT di tempat yang kering, bersih, dan aman.</li></ol>'],
+['📝 Langkah Penggunaan LKPD','<ol><li>Siapkan LKPD untuk setiap peserta didik atau kelompok.</li><li>Baca judul, tujuan, dan pertanyaan awal.</li><li>Tuliskan prediksi.</li><li>Lakukan eksperimen dengan kartu sebagai panduan.</li><li>Catat hasil pengamatan yang benar-benar terjadi.</li><li>Jawab pertanyaan dengan hasil pengamatan sebagai bukti.</li><li>Buat kesimpulan.</li><li>Diskusikan hasil bersama kelompok atau kelas.</li><li>Kumpulkan LKPD kepada guru.</li></ol>'],
+['🌟 Penutup','<p>Melalui penggunaan KIT GAYA secara terarah, peserta didik memperoleh pengalaman belajar yang aktif, menyenangkan, dan bermakna. Guru menjadi fasilitator yang membimbing eksperimen, pengolahan hasil pengamatan, dan pemahaman konsep gaya berdasarkan bukti yang ditemukan.</p>']];
+const LANG=['Pilih kartu eksperimen. Mulai dari Misi 1 sampai Misi 5.','Kenali misi: baca judul, konsep, dan tujuan.','Siapkan alat dan bahan sesuai daftar pada kartu.','Baca langkah percobaan sebelum mulai.','Buat prediksi bersama kelompok.','Lakukan eksperimen dengan tertib dan hati-hati.','Amati dan catat hasil pada LKPD.','Jawab pertanyaan pengamatan.','Tuliskan kesimpulan.','Kerjakan tantangan tambahan jika sempat.','Rapikan dan hitung kembali alat ke dalam kotak KIT.'];
+const T=['Tertarik','Tidak tertarik'];
+const LK=[
+{t:'Misi Dorong dan Tarik',f:[['A. Prediksiku','Menurutku, ketika mobil mainan didorong atau ditarik, mobil akan:','a'],['B. Hasil pengamatan','Mobil sebelum diberi gaya','b1'],['','Mobil didorong','b2'],['','Mobil ditarik','b3'],['C. Kesimpulanku','Gaya dorongan dan tarikan dapat ...','c']]},
+{t:'Misi Magnet Ajaib',f:[['A. Prediksiku','Aku memperkirakan magnet dapat menarik benda berikut:','a'],...['Klip kertas','Benda kayu','Benda plastik','Benda logam'].flatMap((n,i)=>[[i?'':'B. Hasil pengamatan',n+' – prediksiku','p'+i,T],['',n+' – hasil percobaan','h'+i,T]]),['C. Kesimpulanku','Magnet dapat menarik ...','c1'],['','Magnet tidak dapat menarik semua ...','c2']]},
+{t:'Misi Permukaan Licin atau Kasar',f:[['A. Prediksiku','Menurutku, benda akan bergerak paling mudah pada permukaan:','a'],['B. Hasil pengamatan','Karton licin – hasil gerak benda','b1'],['','Kain – hasil gerak benda','b2'],['','Karton bertekstur – hasil gerak benda','b3'],['C. Kesimpulanku','Perbedaan permukaan dapat memengaruhi ...','c']]},
+{t:'Misi Bentuk Benda Berubah',f:[['A. Prediksiku','Menurutku, gaya dapat mengubah bentuk benda karena:','a'],['B. Hasil pengamatan','Plastisin ditekan – perubahan yang terjadi','b1'],['','Spons ditekan lalu dilepas – perubahan yang terjadi','b2'],['','Karet gelang diregangkan lalu dilepas – perubahan yang terjadi','b3'],['C. Kesimpulanku','Gaya dapat mengubah ...','c']]},
+{t:'Misi Mengapa Benda Jatuh?',f:[['A. Prediksiku','Ketika bola dilepaskan dari tangan, bola akan:','a'],['B. Hasil pengamatan','1. Ke arah mana bola bergerak?','b1'],['','2. Apa yang terjadi saat bola menyentuh alas?','b2'],['','3. Gaya apa yang menyebabkan bola tertarik menuju Bumi?','b3'],['C. Kesimpulanku','Benda yang dilepaskan bergerak menuju Bumi karena adanya gaya:','c']]},
+{t:'Tantangan Akhir',f:[['Jawablah berdasarkan hasil percobaan','1. Sebutkan dua contoh kegiatan yang menggunakan gaya otot!','q1'],['','2. Mengapa magnet tidak dapat menarik semua benda?','q2'],['','3. Mengapa benda dapat lebih sulit bergerak pada permukaan tertentu?','q3'],['','4. Sebutkan dua benda yang bentuknya dapat berubah ketika diberi gaya!','q4'],['','5. Mengapa bola yang dilepaskan bergerak menuju permukaan Bumi?','q5'],['Hubungkan dengan kehidupan sehari-hari','Contoh gaya otot','r1'],['','Contoh gaya magnet','r2'],['','Contoh gaya gesek','r3'],['','Contoh gaya gravitasi','r4'],['','Contoh gaya mengubah bentuk','r5']]}];
+const PG=[['home','🏠 Beranda'],['info','📖 Petunjuk'],['misi','🚀 Misi'],['lkpd','✏️ LKPD'],['profil','👩‍🏫 Profil']];
+let page='home',mi=0,li=0;
+function nav(){$('#nav').innerHTML=PG.map(p=>`<button class="${p[0]==page?'on':''}" onclick="go('${p[0]}')">${p[1]}</button>`).join('')}
+function go(p,i){page=p;if(p=='misi'&&i!=null)mi=i;if(p=='lkpd'&&i!=null)li=i;nav();$('#m').innerHTML=V[p]();if(p=='misi')bindMisi();if(p=='lkpd')bindLkpd();scrollTo(0,0)}
+const V={
+home:()=>`<div class="hero"><small>Buku Petunjuk Digital dan LKPD</small><div class="logo"><span>K</span><span>I</span><span>T</span> <span>G</span><span>A</span><span>Y</span><span>A</span></div><div class="sub">Di Sekitar Kita</div><p>Eksperimen sederhana, pemahaman lebih mendalam. Pilih misi dan mulai bereksperimen!</p></div>
+<div class="grid">${MI.map((m,i)=>`<button class="tile" style="background:${C[i]}" onclick="go('misi',${i})"><b>${m.e}</b>Misi ${i+1}<br>${m.n}</button>`).join('')}</div>
+<div class="card"><h3>Cara belajar di sini</h3><p>Baca <b>Petunjuk</b>, kerjakan <b>Misi</b> sambil mencoba demo, lalu isi <b>LKPD</b>. Jawabanmu tersimpan otomatis di perangkat ini.</p></div><p style="text-align:center;color:var(--mut)">Disusun oleh Lukiyatur Rohmah</p>`,
+info:()=>`<h2>Petunjuk Penggunaan</h2>`+INFO.map((x,i)=>`<details class="card"${i?'':' open'}><summary>${x[0]}</summary>${x[1]}</details>`).join('')+`<div class="card" id="lang"><h3>🪜 Langkah-langkah Penggunaan KIT</h3><div class="bar"><i id="lb"></i></div>${LANG.map((s,i)=>`<label class="step"><input type="checkbox" data-i="${i}" ${(ST.lang||[])[i]?'checked':''}><span>${s}</span></label>`).join('')}</div>`,
+misi:()=>{const m=MI[mi],c=C[mi];return `<div class="pills">${MI.map((x,i)=>`<button style="--c:${C[i]}" class="${i==mi?'on':''}" onclick="go('misi',${i})">${x.e} Misi ${i+1}</button>`).join('')}</div>
+<div class="mh" style="--c:${c}"><h2>Misi ${mi+1}: ${m.t}</h2><p><b>Konsep:</b> ${m.k}</p><p><b>Tujuan:</b> ${m.g}</p></div>
+<div class="card"><h3>🧰 Alat dan bahan</h3><div class="chips">${m.a.map(a=>`<span class="chip">${a}</span>`).join('')}</div></div>
+<div class="card" style="--c:${c}"><h3>🪜 Langkah percobaan</h3><div class="bar"><i id="mb"></i></div>${m.l.map((s,i)=>`<label class="step"><input type="checkbox" data-i="${i}" ${((ST['s'+mi])||[])[i]?'checked':''}><span>${s}</span></label>`).join('')}</div>
+<div class="lab" style="--c:${c}"><h3>🔬 Coba sendiri!</h3>${D[mi]()}</div>
+<div class="card"><h3>✅ Kesimpulan</h3>${m.c}<div class="kes">⚠️ Pesan keselamatan: ${m.s}</div></div>
+<button class="btn" style="--c:${c}" onclick="go('lkpd',${mi})">Isi LKPD Kegiatan ${mi+1}</button>${mi<4?`<button class="btn" style="--c:${C[mi+1]}" onclick="go('misi',${mi+1})">Misi berikutnya</button>`:''}`},
+lkpd:()=>{const k=LK[li];return `<h2>Lembar Kegiatan Peserta Didik</h2><div class="card nm"><div><label class="f">Nama</label><input class="t" data-k="nama" value="${ST.nama||''}"></div><div><label class="f">Kelas</label><input class="t" data-k="kelas" value="${ST.kelas||''}"></div></div>
+<div class="pills">${LK.map((x,i)=>`<button style="--c:${i<5?C[i]:'#d6336c'}" class="${i==li?'on':''}" onclick="go('lkpd',${i})">${i<5?'Kegiatan '+(i+1):'Tantangan'}</button>`).join('')}</div>
+<div class="lab" style="--c:${li<5?C[li]:'#d6336c'}"><h3>${li<5?'Kegiatan '+(li+1)+': ':''}${k.t}</h3>${k.f.map(f=>(f[0]?`<div class="hd">${f[0]}</div>`:'')+`<label class="f">${f[1]}</label>`+(f[3]?`<select data-k="${li}${f[2]}"><option value="">Pilih jawaban</option>${f[3].map(o=>`<option${ST[li+f[2]]==o?' selected':''}>${o}</option>`).join('')}</select>`:`<textarea rows="2" data-k="${li}${f[2]}">${ST[li+f[2]]||''}</textarea>`)).join('')}</div>
+<div class="card"><h3>📤 Kirim ke Guru</h3><p>Setelah semua kegiatan selesai, kirim LKPD agar diperiksa guru. Pastikan Nama dan Kelas sudah diisi.</p><button class="btn" style="--c:#5fae3f" onclick="kirim()">Kirim LKPD</button><button class="btn" style="--c:#2a7de1" onclick="cek()">Cek nilai dari guru</button><div class="msg" id="ks" aria-live="polite"></div></div>
+<button class="btn" onclick="if(confirm('Hapus semua isian LKPD?')){ST={};save();go('lkpd')}" style="--c:#d6336c">Hapus semua isian</button>`},
+profil:()=>`<div class="card pr"><div class="av">👩‍🏫</div><h2>Lukiyatur Rohmah</h2><p>Mahasiswa Pendidikan Profesi Guru (PPG) Calon Guru Sekolah Dasar, Universitas Negeri Jakarta, 2026. Lulusan S1 PGSD Universitas Negeri Jakarta tahun 2024.</p><p>Tertarik merancang kegiatan belajar yang kreatif, inovatif, dan berpusat pada peserta didik.</p><p><a href="guru.html">🔐 Halaman Guru (periksa LKPD)</a></p></div>`};
+const D=[
+()=>`<p>Tekan tombol untuk memberi gaya pada mobil.</p><div class="stage"><div class="car" id="car">🚗</div></div><button class="btn" onclick="mv(25)">Dorong ➡️</button><button class="btn" onclick="mv(-25)">Tarik ⬅️</button><button class="btn" style="--c:#888" onclick="mv(0)">Ulangi</button><div class="msg" id="msg">Mobil diam sebelum diberi gaya.</div>`,
+()=>`<p>Tebak dulu, lalu dekatkan 🧲 ke setiap benda!</p><div class="items">${[['📎','Klip kertas',1],['🪵','Benda kayu',0],['🧴','Tutup plastik',0],['🔩','Baut logam',1]].map(x=>`<button class="it" onclick="mg(this,${x[2]},'${x[1]}')"><span>${x[0]}</span>${x[1]}</button>`).join('')}</div><div class="msg" id="msg"></div>`,
+()=>`<p>Dorong mobil dengan kekuatan yang sama di tiga permukaan.</p>${[['Licin',85],['Kain',48],['Kasar',22]].map((x,i)=>`<div class="lane"><label>${x[0]}</label><div class="stage"><div class="car l" data-d="${x[1]}">🚗</div></div></div>`).join('')}<button class="btn" onclick="sl()">Dorong semua! 💨</button><button class="btn" style="--c:#888" onclick="document.querySelectorAll('.l').forEach(c=>{c.style.transition='none';c.style.left='2%'})">Ulangi</button><div class="msg" id="msg"></div>`,
+()=>`<p>Tekan setiap benda untuk memberi gaya.</p><div style="text-align:center">${['🟣|plastisin|scale(1.5,.5)|1','🧽|spons|scale(1.4,.5)|0','⭕|karet|scale(1.8,.8)|0'].map(x=>{x=x.split('|');return `<span class="obj" role="button" tabindex="0" data-t="${x[2]}" data-k="${x[3]}" data-n="${x[1]}" onclick="pr(this)">${x[0]}</span>`}).join('')}</div><div class="msg" id="msg"></div>`,
+()=>`<p>Lepaskan bola dan amati ke mana ia bergerak.</p><div class="drop"><div class="ball" id="ball">🔴</div><div class="pad"></div><div class="earth">🌍🌍🌍🌍🌍🌍🌍🌍</div></div><button class="btn" onclick="bl()">Lepaskan bola! ⬇️</button><div class="msg" id="msg"></div>`];
+let cp=2;
+function mv(d){const c=$('#car');if(!d)cp=2;else cp=Math.max(2,Math.min(82,cp+d));c.style.left=cp+'%';$('#msg').textContent=!d?'Mobil kembali diam.':d>0?'Didorong: mobil bergerak menjauh dari tangan.':'Ditarik: mobil bergerak mendekat ke arah tarikan.'}
+function mg(b,y,n){b.classList.remove('pull','no');void b.offsetWidth;b.classList.add(y?'pull':'no');$('#msg').textContent=y?n+' tertarik oleh magnet! 🎉':n+' tidak tertarik oleh magnet.'}
+function sl(){document.querySelectorAll('.l').forEach(c=>{c.style.transition='none';c.style.left='2%';void c.offsetWidth;c.style.transition='left 1.4s cubic-bezier(.1,.8,.3,1)';c.style.left=c.dataset.d+'%'});$('#msg').textContent='Di permukaan licin mobil meluncur paling jauh. Di permukaan kasar, gaya gesek membuatnya cepat berhenti.'}
+function pr(o){if(o.dataset.on=='1'&&o.dataset.k=='1'){o.style.transform='';o.dataset.on='0';$('#msg').textContent='Plastisin dibentuk ulang.';return}
+o.style.transform=o.dataset.t;o.dataset.on='1';$('#msg').textContent=o.dataset.n+' sedang diberi gaya...';
+setTimeout(()=>{if(o.dataset.k!='1'){o.style.transform='';o.dataset.on='0'}$('#msg').textContent=o.dataset.k=='1'?'Plastisin tetap berubah bentuk setelah gaya dilepas. Sentuh lagi untuk membentuk ulang.':o.dataset.n+' kembali ke bentuk semula setelah gaya dilepas.'},900)}
+function bl(){const b=$('#ball');b.classList.remove('go');void b.offsetWidth;b.classList.add('go');$('#msg').textContent='Bola bergerak ke bawah, menuju Bumi, karena gaya gravitasi.'}
+function bar(id,arr,n){const d=arr.filter(Boolean).length;$(id).style.width=d/n*100+'%'}
+function bindMisi(){const k='s'+mi,n=MI[mi].l.length;bar('#mb',ST[k]||[],n);document.querySelectorAll('.step input').forEach(i=>i.onchange=()=>{const a=ST[k]||[];a[i.dataset.i]=i.checked;ST[k]=a;i.parentNode.classList.toggle('done',i.checked);bar('#mb',a,n);save()});document.querySelectorAll('.step input').forEach(i=>i.parentNode.classList.toggle('done',i.checked))}
+function bindLkpd(){document.querySelectorAll('[data-k]').forEach(e=>e.oninput=e.onchange=()=>{ST[e.dataset.k]=e.value;save()})}
+const oldInfo=V.info;V.info=()=>oldInfo();
+document.addEventListener('change',e=>{const i=e.target;if(page=='info'&&i.closest('#lang')){const a=ST.lang||[];a[i.dataset.i]=i.checked;ST.lang=a;bar('#lb',a,LANG.length);i.parentNode.classList.toggle('done',i.checked);save()}});
+const _go=go;go=function(p,i){_go(p,i);if(p=='info'){bar('#lb',ST.lang||[],LANG.length);document.querySelectorAll('#lang .step input').forEach(i=>i.parentNode.classList.toggle('done',i.checked))}};
+const API='/api/lkpd';
+function say(t){const e=$('#ks');if(e)e.textContent=t}
+async function kirim(){
+ if(!(ST.nama||'').trim()||!(ST.kelas||'').trim()){say('Isi Nama dan Kelas dulu ya.');return}
+ if(!confirm('Kirim LKPD ke guru sekarang? Mengirim ulang akan menimpa kiriman sebelumnya.'))return;
+ const rows=[];LK.forEach((k,i)=>k.f.forEach(f=>rows.push({k:k.t,q:f[1],a:ST[i+f[2]]||''})));
+ say('Mengirim...');
+ try{
+  const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nama:ST.nama,kelas:ST.kelas,rows})});
+  const d=await r.json();if(!r.ok)throw new Error(d.error||r.status);
+  say('✅ LKPD terkirim! Nanti tekan “Cek nilai dari guru” untuk melihat hasilnya.');
+ }catch(e){say('❌ Gagal mengirim: '+e.message+' (Fitur kirim hanya aktif setelah website di-deploy ke Netlify.)')}
+}
+async function cek(){
+ if(!(ST.nama||'').trim()||!(ST.kelas||'').trim()){say('Isi Nama dan Kelas dulu ya.');return}
+ say('Memeriksa...');
+ try{
+  const r=await fetch(API+'?nama='+encodeURIComponent(ST.nama)+'&kelas='+encodeURIComponent(ST.kelas));
+  const d=await r.json();if(!r.ok)throw new Error(d.error||r.status);
+  say(d.nilai==null?'⏳ LKPD sudah diterima, menunggu diperiksa guru.':'⭐ Nilai: '+d.nilai+(d.komentar?' — Komentar guru: '+d.komentar:''));
+ }catch(e){say('❌ '+e.message)}
+}
+go('home');
+</script>
+</body>
+</html>
